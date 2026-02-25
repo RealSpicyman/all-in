@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All-In Wisdom</title>
+
+    <link rel="stylesheet" href="/CSS/style.css">
+    <link rel="icon" href="/images/allinlogof.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    
+    <style>
+        .image-generator-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 100px);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .generate-btn {
+            padding: 12px 25px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+        
+        .generate-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            transform: scale(1.05);
+        }
+        
+        .input-box {
+            padding: 12px 15px;
+            border: 2px solid #ffffff;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 300px;
+            background-color: transparent;
+            color: white;
+        }
+        
+        #imageDisplay img {
+            max-width: 80%;
+            max-height: 60vh;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .wisdom-text {
+            font-size: 50rem;
+            font-weight: 50;
+         margin-top: 15px;
+         font-size: 22px;
+         color: #000000;
+        font-family: 'Pacifico', cursive;
+         font-style: italic;
+         max-width: 600px;
+         padding: 0 20px;
+        text-shadow: 2px 2px 8px rgb(255, 255, 255, 1);
+}
+        
+        body {
+            background-image: url("/images/horsequote.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="floatingBalance">
+        <img src="/images/allinCoin.png" alt="Coin" class="balance-icon" />
+        <span id="balanceAmount"></span>
+    </div>
+
+    <nav class="navbar">
+        <i class="bi bi-brightness-high-fill" id="toggleDark"></i>
+        <ul class="nav-list" id="nav-list">
+            <li><a href="home.html">Home</a></li>
+            <li class="dropdown">
+                <a href="games.html" class="dropbtn">Games</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-item"><a href="rps.html">Rock Paper Scissors</a></div>
+                    <div class="dropdown-item"><a href="slots.html">Slots</a></div>
+                    <div class="dropdown-item"><a href="blackjack.html">Blackjack</a></div>  
+                    <div class="dropdown-item"><a href="baccarat.html">Baccarat</a></div>
+                    <div class="dropdown-item"><a href="plinko.html">Plinko</a></div>
+                </div>
+            </li>
+            <li><a href="others.html">All-In Wisdom</a></li>
+        </ul>
+    </nav>
+
+    
+
+    <div class="image-generator-container">
+        <h1 style="color: #ffffff; margin-bottom: 20px;">All-in Wisdom</h1>
+        <input type="text" id="userInput" placeholder="What's troubling you, mortal?" class="input-box">
+        <button id="generateImageBtn" class="generate-btn">Bestow Upon Me Wisdom</button>
+        <div id="imageDisplay"></div>
+    </div>
+
+    <script src="/Game Codes/currency.js" defer></script>
+    <script src="/JavaScripts/home_currency.js" defer></script>
+    <script src="/JavaScripts/script.js" defer></script>
+
+    <script>
+        document.getElementById('generateImageBtn').addEventListener('click', function() {
+            const workingImages = [
+                '/images/horseOfSuspicion.gif',
+                '/images/horseNodding.gif',
+                '/images/horseOfTruth.gif',
+                '/images/horseNodding2.gif',
+                '/images/horseNodding3.gif',
+                '/images/horseRunning.gif',
+                '/images/CrispyFries.jpg'
+            ];
+            
+            const dumbWisdom = [
+                "Friendship is like peeing your pants, everyone can see it, only you can feel the warmth",
+                "The early bird gets the worm, but the second mouse gets the cheese",
+                "If at first you don't succeed, skydiving is not for you",
+                "Money can't buy happiness, but it can buy a jetski and I've never seen anyone sad on a jetski",
+                "I used to think I was indecisive, but now I'm not so sure",
+                "The best way to remember your wife's birthday is to forget it once",
+                "You don't need a parachute to skydive. You only need a parachute to skydive twice",
+                "I'm not lazy, I'm on energy saving mode",
+                "If you can't convince them, confuse them",
+                "The problem with doing nothing is not knowing when you're finished",
+                "I'm not arguing, I'm just explaining why I'm right",
+                "I put my phone in airplane mode, but it's not flying",
+                "I'm not saying I'm Wonder Woman, I'm just saying no one has ever seen me and Wonder Woman in the same room together",
+                "I'm not short, I'm concentrated awesome",
+                "I don't make mistakes. I date them",
+                "I'm not procrastinating, I'm just prioritizing my laziness",
+                "I'm not a complete idiot - some parts are missing",
+                "I don't need anger management, I need people to stop making me angry",
+                "I'm not ignoring you, I'm just prioritizing my thoughts",
+                "I'm not late, everyone else is just early"
+            ];
+            
+            const randomImage = workingImages[Math.floor(Math.random() * workingImages.length)];
+            const randomQuote = dumbWisdom[Math.floor(Math.random() * dumbWisdom.length)];
+            
+            const imageDisplay = document.getElementById('imageDisplay');
+            imageDisplay.innerHTML = '<p>The wisdom horse is thinking...</p>';
+
+            const img = new Image();
+            img.onload = function() {
+                imageDisplay.innerHTML = '';
+                imageDisplay.appendChild(img);
+                
+                const wisdomElement = document.createElement('p');
+                wisdomElement.className = 'wisdom-text';
+                wisdomElement.textContent = `"${randomQuote}"`;
+                imageDisplay.appendChild(wisdomElement);
+            };
+            
+            img.onerror = function() {
+                imageDisplay.innerHTML = '<p>The wisdom horse is currently out to pasture. Try again later.</p>';
+            };
+            
+            img.src = randomImage;
+            img.alt = "Wisdom Horse";
+            img.style.opacity = 0;
+            setTimeout(() => { img.style.opacity = 1; }, 50);
+        });
+    </script>
+    
+</body>
+</html>

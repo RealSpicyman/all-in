@@ -1,0 +1,345 @@
+:root {
+    --main-bg-color: rgb(47, 72, 109);
+    --hover-bg-color: rgb(236, 229, 218);
+    --text-color: rgb(236, 229, 218);
+    --hover-text-color: rgb(236, 229, 218);
+    --dropdown-hover-bg-color: rgb(180, 233, 64);
+}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+body {
+    overflow-x: hidden;
+    background-color: #d0cccc;
+    background-image: url('/images/baccarat7.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  #gameOutput {
+    background-color: #2a2c47db;
+    border: 2px solid #d0cccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 900px;
+    max-width: 90vw;
+    margin: 20px auto;
+    color: rgb(255, 84, 84);
+    border-radius: 8px;
+    backdrop-filter: blur(7px);
+    font-style: italic;
+    font-family: 'Cinzel Decorative', serif;
+    font-weight: 480;
+    font-size: 22px;
+    text-align: center;
+  
+    max-height: 0;
+    overflow: hidden;
+  
+    transition: max-height 0.6s ease-out;
+  }
+
+  #gameOutput.expanded {
+    max-height: 800px;    
+    overflow-y: auto;     
+  }
+  
+#resultMessage {
+    margin-top: 5px;
+    padding: 0 10px;
+}
+
+
+#playerCardsDisplay {
+    margin-top: 110px;
+    margin-right: 0px;
+}
+
+#playerCardsDisplay h3 {
+    margin: 0;
+    font-size: 22px;
+}
+
+#playerCardsDisplay p {
+    margin: 4px ;
+    font-size: 18px;
+}
+.playingCards .card {
+    opacity: 0;
+    transform: translateY(30px) scale(1) rotateZ(0deg);
+    animation: dealIn 0.6s ease forwards;
+    transition: transform 0.7s ease, box-shadow 0.7s ease;
+    cursor: pointer;
+    will-change: transform, box-shadow;
+    transition: transform 0.7s ease-in, box-shadow 0.3s ease;
+
+}
+
+.playingCards .card:hover {
+    
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 8px 6px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+  }
+
+@keyframes dealIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(1) rotateZ(0deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotateZ(0deg);
+    }
+}
+
+.playingCards ul.hand li:nth-child(1) .card {
+    animation-delay: 0s;
+}
+.playingCards ul.hand li:nth-child(2) .card {
+    animation-delay: 0.5s;
+}
+.playingCards ul.hand li:nth-child(3) .card {
+    animation-delay: 1s;
+}
+.playingCards ul.hand li:nth-child(4) .card {
+    animation-delay: 1.5s;
+}
+.playingCards ul.hand li:nth-child(5) .card {
+    animation-delay: 2s;
+}
+
+.playingCards ul.hand {
+    display: flex !important;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    gap: 1.5em !important;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.playingCards ul.hand li {
+    position: static !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0;
+    padding: 0;
+}
+.center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.choiceButton,
+.startButton {
+    width: 90px;
+    height: 45px;
+    border-radius: 6px;
+    background-color: rgb(36, 44, 34);
+    color: white;
+    margin: 5px;
+    border: none;
+
+    box-shadow: 0 4px 6px rgba(0,0,0,0.25);
+    transition: 
+      transform 0.1s ease-in, 
+      box-shadow 0.1s ease-in;
+}
+input {
+    width: 200px;
+    padding: 10px 14px;
+    font-size: 16px;
+    font-family: 'Arial Black', sans-serif;
+    color: #d7d4cb;                       
+    background: radial-gradient(circle at top left, #242323 0%, #2b2f5db6 80%);
+    border: 1.5px solid #d3cdbc;            
+    border-radius: 6px;
+    box-shadow: 
+      inset 0 1px 2px rgba(255,255,255,0.1),
+      0 2px 6px rgba(0,0,0,0.8);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+    transition: 
+      box-shadow 0.3s ease, 
+      transform 0.2s ease-in-out,
+      border-color 0.3s ease;
+  }
+  
+  input::placeholder {
+    color: #b8965c;                        
+    opacity: 1;
+  }
+  
+  
+
+input {
+  width: 180px;
+  padding: 8px 12px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 14px;
+  color: #f5e1a4;                                 
+  border: 1px solid #ffffff;                      
+  border-radius: 4px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  
+}
+
+input::placeholder {
+  color: #957cc8;                                
+  font-style: italic;
+}
+  input:focus {
+    outline: none;
+    border-color: #ffffff;                  
+    
+  }
+  .choiceButton,
+.startButton {
+  display: inline-block;
+  padding: 8px 16px;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 14px;
+  color: #e8e2d1;                               
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  box-shadow:
+    inset 0 1px 2px rgba(255,255,255,0.1),
+    0 2px 6px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.7);
+  cursor: pointer;
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.2s ease-in-out;
+}
+
+.choiceButton:hover,
+.startButton:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 3px rgba(127,117,220,0.4),
+    0 4px 12px rgba(0,0,0,0.7);
+}
+
+.choiceButton:active,
+.startButton:active {
+  transform: translateY(0);
+  border-color: #ffffff;                         
+  box-shadow:
+    inset 0 2px 4px rgba(0,0,0,0.7),
+    0 1px 3px rgba(0,0,0,0.6);
+}
+
+.choice-buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    background-color: white;
+    padding: 15px 20px;
+    color: black;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.navbar a,
+.nav-list li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0 20px;
+    transition: text-decoration 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.navbar a:hover,
+.navbar.dark a:hover,
+.navbar .dropdown-item a:hover,
+.navbar.dark .dropdown-item a:hover {
+    color: rgb(255, 238, 186);
+}
+
+.navbar.dark {
+    background-color:#47473f;
+    color: white;
+}
+
+.navbar.dark a,
+.navbar.dark .nav-list li a,
+.navbar.dark .dropdown-item a {
+    color: white;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li {
+    position: relative;
+}
+
+.nav-list li a:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(249, 249, 249);
+}
+
+.dropdown {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: black;
+}
+
+.dropdown-content.show {
+    display: flex;
+    opacity: 1;
+}
+
+.navbar.dark .dropdown-content {
+    background-color: #515248;
+}
+
+.dropdown-item {
+    padding: 10px 15px;
+}
+
+.dropdown-item a {
+    color: black;
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .nav-list li a {
+        font-size: 16px;
+        margin: 10px;
+    }
+}

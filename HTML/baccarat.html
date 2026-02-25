@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Baccarat</title>
+    <link rel="stylesheet" href="/CSS/baccarat.css" />
+    <link rel="icon" href="/images/allinlogo.png" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script src="/JavaScripts/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="/CSS/cards.css" />
+    
+    
+
+    <style>
+        #floatingBalanceRPS {
+            position: fixed;
+            top: 4px; 
+            right: 15px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            background-color: rgba(41, 41, 43, 0.7);
+            padding: 4px 8px;
+            border-radius: 10px;
+            color: rgb(255, 212, 55);
+            font-weight: bold;
+            gap: 6px;
+        }
+    
+        #floatingBalanceRPS .balance-iconRPS {
+            width: 70px;
+            height: auto;
+            scale: 1.9;
+            object-fit: contain;
+            margin: 0; 
+        }
+    </style>
+</head>
+<body>
+    <div id="floatingBalanceRPS">
+        <img src="/images/allinCoin.png" alt="Coin" class="balance-iconRPS" />
+        <span id="balanceAmount"></span>
+    </div>
+
+    <nav class="navbar">
+        <ul class="nav-list" id="nav-list">
+            <li><a href="home.html">Home</a></li>
+            <li class="dropdown">
+                <a href="games.html" class="dropbtn">Games</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-item"><a href="rps.html">Rock Paper Scissors</a></div>
+                    <div class="dropdown-item"><a href="slots.html">Slots</a></div>
+                    <div class="dropdown-item"><a href="blackjack.html">Blackjack</a></div>
+                    <div class="dropdown-item"><a href="#">Baccarat</a></div>
+                    <div class="dropdown-item"><a href="plinko.html">Plinko</a></div>
+                </div>
+            </li>
+            <li><a href="others.html">All-In Wisdom</a></li>
+        </ul>
+    </nav><div class="center">
+        <div id="gameOutput">
+          <div id="playerCardsDisplay" class="hidden">
+            <div id="cardDetails"></div>
+            <p id="cardPoints"></p>
+          </div>
+      
+          <div id="resultMessage">Enter your bet amount to start</div>
+      
+          <p id="bankerPoints"></p>
+        </div>
+      </div>
+
+    <div class="container">
+        <div class="center">
+            <input type="number" id="betAmount" placeholder="Enter your bet amount" min="1" />
+            <div class="choice-buttons-container hidden" id="betChoiceSection"
+            style="display: inline-flex; gap: 20px; margin-top: 10px;">
+            
+            
+            </div>
+            <div class="choice-buttons-container" style="display: inline-flex; gap: 20px; margin-top: 10px;">
+                <button class="choiceButton" onclick="placeBet()">Place Bet</button>
+                <button class="choiceButton" onclick="chooseBetType('Player')" id="player">Player</button>
+                <button class="choiceButton" onclick="chooseBetType('Banker')" id="banker">Banker</button>
+                <button class="choiceButton" onclick="chooseBetType('Tie')" id="tie">Tie</button>
+            </div>
+            <br>
+        </div>
+    </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        requestAnimationFrame(() => {
+          document.getElementById('gameOutput').classList.add('expanded');
+        });
+      });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdown = document.querySelector('.dropdown');
+            const dropdownContent = document.querySelector('.dropdown-content');
+            let timeout;
+
+            dropdown.addEventListener('mouseenter', function () {
+                clearTimeout(timeout);
+                dropdownContent.classList.add('show');
+            });
+
+            dropdown.addEventListener('mouseleave', function () {
+                timeout = setTimeout(() => {
+                    dropdownContent.classList.remove('show');
+                }, 300);
+            });
+
+            dropdownContent.addEventListener('mouseenter', function () {
+                clearTimeout(timeout);
+                dropdownContent.classList.add('show');
+            });
+
+            dropdownContent.addEventListener('mouseleave', function () {
+                timeout = setTimeout(() => {
+                    dropdownContent.classList.remove('show');
+                }, 300);
+            });
+        });
+    </script>
+
+    <script src="/Game Codes/baccarat.js"></script>
+    <script src="/JavaScripts/home_currency.js" defer></script>
+    <script src="/JavaScripts/script.js" defer></script>
+    <script src="/Game Codes/currency.js"></script>
+</body>
+</html>

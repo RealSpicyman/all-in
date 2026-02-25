@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="/CSS/bj.css">
+    <link rel="icon" href="/images/allinlogo.png">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="home.html">Home</a></li>
+            <li class="dropdown">
+                <a href="games.html" class="dropbtn">Games</a>
+                <div class="dropdown-content">
+                    <div class="dropdown-item"><a href="rps.html">Rock Paper Scissors</a></div>
+                    <div class="dropdown-item"><a href="slots.html">Slots</a></div>
+                    <div class="dropdown-item"><a href="blackjack.html">Blackjack</a></div>
+                    <div class="dropdown-item"><a href="baccarat.html">Baccarat</a></div>
+                    <div class="dropdown-item"><a href="plinko.html">Plinko</a></div>
+                </div>
+
+    <div id="floatingBalance">
+        <img src="/images/allinCoin.png" alt="Coin" class="balance-icon" />
+        <span id="balanceAmount"></span>
+    </div>
+            </li>
+            <li><a href="others.html">All-In Wisdom</a></li>
+        </ul>
+    </nav>
+    
+    <div class="blackjack-container">
+        <div id="output"></div>
+        <input type="number" id="bet" placeholder="Enter Bet" min="1">
+        <button id="spinButton">Place Bet</button>
+        <button id="resetButton">Reset</button>
+        
+        <div class="game-area">
+            <div id="dealer">
+                <h2>Dealer's Hand</h2>
+                <div id="dealer-hand"></div>
+            </div>
+            <div id="player">
+                <h2>Your Hand</h2>
+                <div id="player-hand"></div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button id="hit-btn">Hit</button>
+            <button id="stand-btn">Stand</button>
+            <button id="double-btn">Double Down</button>
+        </div>
+        <p id="result"></p>
+    </div>
+
+    <script src="/JavaScripts/script.js"></script>
+    <script src="/Game Codes/currency.js"></script>
+    <script src="/Game Codes/exercise_blackjack.js"></script>
+</body>
+</html>
